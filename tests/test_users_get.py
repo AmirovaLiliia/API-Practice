@@ -2,6 +2,8 @@ import pytest
 import requests
 from config import BASE_URL
 
+
+@pytest.mark.positive
 def test_get_user():
     response = requests.get(
         f"{BASE_URL}/users/1"
@@ -17,7 +19,7 @@ def test_get_user():
 
 
 
-
+@pytest.mark.negative
 @pytest.mark.parametrize("user_id", [
     999,
     9999,
