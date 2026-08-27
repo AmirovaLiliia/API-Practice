@@ -24,8 +24,8 @@ def test_create_user():
     )
 
     assert response.status_code == 201
-    assert response.json()[ "name" ] == "Tatyana"
-    assert response.json()[ "email" ] == "tatyana@example.com"
+    assert response.json()["name"] == "Tatyana"
+    assert response.json()["email"] == "tatyana@example.com"
 
 
 

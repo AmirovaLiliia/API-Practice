@@ -28,8 +28,8 @@ def test_user_data():
     response = requests.get("https://jsonplaceholder.typicode.com/users/1")
     data = response.json()
 
-    assert data[ "id"] == 1
-    assert data[ "name"] == "Leanne Graham"
+    assert data["id"] == 1
+    assert data["name"] == "Leanne Graham"
 
 
 #на
