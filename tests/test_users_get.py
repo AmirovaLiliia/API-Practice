@@ -13,9 +13,28 @@ def test_get_user():
 
     data = response.json()
 
-    assert data["id"] == 1
-    assert data["name"] == "Leanne Graham"
+    assert "id" in data
+    assert "name" in data
+    assert "username" in data
+    assert "email" in data
+
+    expected_user = {
+    "id": 1,
+    "name": "Leanne Graham"
+}
+
+    assert data["id"] == expected_user["id"]
+    assert data["name"] == expected_user["name"]
     assert "@" in data["email"]
+    #assert data["email"] == "leanne@gmail.com"
+    assert "." in data["email"]
+
+
+    assert isinstance(data["id"], int)
+    assert isinstance(data["name"], str)
+    assert isinstance(data["username"], str)
+    assert isinstance(data["email"], str)
+
 
 
 
@@ -31,6 +50,7 @@ def test_get_nonexistent_user(user_id):
     )
 
     assert response.status_code == 404
+    assert response.json() == {}
 
 
 

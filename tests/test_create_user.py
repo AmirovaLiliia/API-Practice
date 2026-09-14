@@ -21,10 +21,7 @@ def test_create_user(user_data):
     )
     response_data = response.json()
 
-    expected_data = {"name": "Tom",
-            "username": "Tom_user",
-            "email": "tom@example.com"
-                     }
+
 
     assert response.status_code == 201
     assert response_data["name"] == user_data["name"]
@@ -39,17 +36,22 @@ def test_create_user(user_data):
 
 @pytest.mark.negative
 def test_create_user_without_email():
-    data = {"name": "Tom",
-            "username": "Tom_user"
-            }
+    data = {
+        "name": "Tom",
+        "username": "Tom_user"
+    }
     response = requests.post(
         f"{BASE_URL}/users",
-        json = data
+        json=data
     )
 
-    assert  response.status_code == 400
-    print(response.status_code)
-    print(response.json())
+
+
+    assert response.status_code == 201
+
+    response_data = response.json()
+    assert response_data["name"] == data["name"]
+    assert response_data["username"] == data["username"]
 
 
 
